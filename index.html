@@ -41,7 +41,7 @@ function draw() {
     textSize(13);
     text('click', width / 2, height / 2);
   } else {
-    let imgW = 1920;
+    let imgW = windowWidth;
     let imgH = current.height * (imgW / current.width);
     image(current, width / 2 - imgW / 2, height / 2 - imgH / 2, imgW, imgH);
   }
