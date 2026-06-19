@@ -33,10 +33,10 @@ function draw() {
     noStroke();
     textAlign(CENTER, CENTER);
     textFont('monospace');
-    textSize(13);
+    textSize(26);
     text('click', width / 2, height / 2);
   } else {
-    let imgW = 1200;
+    let imgW = 1500;
     let imgH = current.height * (imgW / current.width);
     image(current, width / 2 - imgW / 2, height / 2 - imgH / 2, imgW, imgH);
   }
