@@ -2,23 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { overflow: hidden; background: white; }
-    canvas { display: block; }
+    * { margin: 0; padding: 0; }
+    body { overflow: hidden; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
 <body>
 <script>
-let imgs = [];
-let current = null;
-let loaded = false;
 const base = "https://raw.githubusercontent.com/martibrg/collective-crochet/main/";
 const total = 12;
-const IMG_W = 2788;
-const IMG_H = 1976;
+let imgs = [];
+let current = null;
 
 function preload() {
   for (let i = 1; i <= total; i++) {
@@ -28,9 +23,7 @@ function preload() {
 }
 
 function setup() {
-  let scale = min(windowWidth / IMG_W, windowHeight / IMG_H);
-  createCanvas(IMG_W * scale, IMG_H * scale);
-  loaded = true;
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -43,12 +36,13 @@ function draw() {
     textSize(13);
     text('click', width / 2, height / 2);
   } else {
-    image(current, 0, 0, width, height);
+    let imgW = 260;
+    let imgH = current.height * (imgW / current.width);
+    image(current, width / 2 - imgW / 2, height / 2 - imgH / 2, imgW, imgH);
   }
 }
 
 function mousePressed() {
-  if (!loaded) return;
   if (current === null) {
     current = random(imgs);
   } else {
@@ -57,8 +51,7 @@ function mousePressed() {
 }
 
 function windowResized() {
-  let scale = min(windowWidth / IMG_W, windowHeight / IMG_H);
-  resizeCanvas(IMG_W * scale, IMG_H * scale);
+  resizeCanvas(windowWidth, windowHeight);
 }
 </script>
 </body>
