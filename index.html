@@ -17,8 +17,7 @@ let current = null;
 let loaded = false;
 const base = "https://raw.githubusercontent.com/martibrg/collective-crochet/main/";
 const total = 12;
-const IMG_W = 2788;
-const IMG_H = 1976;
+
 
 function preload() {
   for (let i = 1; i <= total; i++) {
@@ -28,8 +27,7 @@ function preload() {
 }
 
 function setup() {
-  let scale = min(windowWidth / IMG_W, windowHeight / IMG_H);
-  createCanvas(IMG_W * scale, IMG_H * scale);
+  createCanvas(windowWidth, windowHeight);
   loaded = true;
 }
 
@@ -43,7 +41,9 @@ function draw() {
     textSize(13);
     text('click', width / 2, height / 2);
   } else {
-    image(current, 0, 0, width, height);
+    let imgW = 1920;
+    let imgH = current.height * (imgW / current.width);
+    image(current, width / 2 - imgW / 2, height / 2 - imgH / 2, imgW, imgH);
   }
 }
 
@@ -56,10 +56,7 @@ function mousePressed() {
   }
 }
 
-function windowResized() {
-  let scale = min(windowWidth / IMG_W, windowHeight / IMG_H);
-  resizeCanvas(IMG_W * scale, IMG_H * scale);
-}
+
 </script>
 </body>
 </html>
