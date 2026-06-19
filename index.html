@@ -23,7 +23,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, imageHeight);
+  let scale = min(windowWidth / IMG_W, windowHeight / IMG_H);
+  createCanvas(IMG_W * scale, IMG_H * scale);
+  loaded = true;
 }
 
 function draw() {
