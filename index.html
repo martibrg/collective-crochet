@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <style>
     * { margin: 0; padding: 0; }
-    body { overflow: hidden; }
+    body { overflow: hidden; background: white; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
@@ -50,6 +50,11 @@ function mousePressed() {
   } else {
     current = null;
   }
+
+  function windowResized() {
+  let scale = min(windowWidth / IMG_W, windowHeight / IMG_H);
+  resizeCanvas(IMG_W * scale, IMG_H * scale);
+}
 }
 
 </script>
